@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function (): void {
@@ -12,13 +13,14 @@ Route::prefix('v1')->group(function (): void {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/me', [AuthController::class, 'me']);
 
-        // Admin only routes
-        Route::middleware(['role:Admin'])->group(function (): void {
-            // User management
-            Route::prefix('users')->group(function (): void {
-                // Route::get('/', [UserController::class, 'index']);
-                // Route::post('/', [UserController::class, 'store']);
-            });
+        // Admin-only routes
+        // User management
+        Route::prefix('users')->group(function (): void {
+            Route::get('/', [UserController::class, 'index']);
+            Route::get('/{user}', [UserController::class, 'show']);
+            // Route::post('/', [UserController::class, 'store']);
+            // Route::put('/{user}', [UserController::class, 'update']);
+            // Route::delete('/{user}', [UserController::class, 'destroy']);
         });
 
         // Manager and Admin routes

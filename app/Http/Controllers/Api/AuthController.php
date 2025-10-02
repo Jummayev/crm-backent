@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginRequest;
-use App\Http\Traits\ApiResponse;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,9 +13,7 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    use ApiResponse;
-
-    public function __construct(private AuthService $authService) {}
+    public function __construct(private readonly AuthService $authService) {}
 
     /**
      * Handle user login.
@@ -27,7 +26,7 @@ class AuthController extends Controller
                 $request->input('password')
             );
 
-            return $this->successResponse([
+            return okResponse([
                 'user' => [
                     'id' => $result['user']->id,
                     'name' => $result['user']->name,
@@ -38,7 +37,7 @@ class AuthController extends Controller
                 'token_type' => $result['token_type'],
             ], 'Login successful');
         } catch (ValidationException $e) {
-            return $this->validationErrorResponse($e->errors(), 'Login failed');
+            return invalidData('Login failed', $e->errors());
         }
     }
 
@@ -49,15 +48,15 @@ class AuthController extends Controller
     {
         $this->authService->logout($request->user());
 
-        return $this->successResponse(null, 'Logout successful');
+        return okResponse(null, 'Logout successful');
     }
 
     /**
-     * Get authenticated user.
+     * Get an authenticated user.
      */
     public function me(Request $request): JsonResponse
     {
-        return $this->successResponse([
+        return okResponse([
             'id' => $request->user()->id,
             'name' => $request->user()->name,
             'username' => $request->user()->username,

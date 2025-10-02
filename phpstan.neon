@@ -1,0 +1,33 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 2
+    paths:
+        - app
+        - config
+        - database
+        - lang
+        - Modules
+        - public
+        - resources
+        - routes
+        - tests
+    bootstrapFiles:
+        - bootstrap/app.php
+    phpVersion: 80400
+    ignoreErrors:
+        -
+            message: "#^Called 'env' outside of the config directory which returns null when the config is cached, use 'config'.$#"
+            path: *config/*.php
+        -
+            message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Model::.*\\(\\).$#"
+        -
+            message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model::\\$.*$#"
+        -
+            message: "#^Access to an undefined property Modules\\\\.*\\\\Models\\\\.*::\\$.*$#"
+        -
+            message: "#^Access to an undefined property App\\\\Models\\\\.*::\\$.*$#"
+        -
+            message: "#^Trait Laravel\\\\Passport\\\\HasApiTokens requires using class to implement Laravel\\\\Passport\\\\Contracts\\\\OAuthenticatable, but App\\\\Models\\\\User does not\\.$#"
+            path: app/Models/User.php

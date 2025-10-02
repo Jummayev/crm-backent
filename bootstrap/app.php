@@ -1,17 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Http\Middleware\Cors;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Middleware\PermissionMiddleware;
+use Spatie\Permission\Middleware\RoleMiddleware;
+use Spatie\Permission\Middleware\RoleOrPermissionMiddleware;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        api: __DIR__.'/../routes/api.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        api: __DIR__ . '/../routes/api.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
         then: function () {
             RateLimiter::for('api', function (Request $request) {
@@ -21,65 +37,111 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->api(prepend: [
-            \App\Http\Middleware\Cors::class,
+            Cors::class,
         ]);
 
         $middleware->alias([
-            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
-            'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
-            'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+            'role' => RoleMiddleware::class,
+            'permission' => PermissionMiddleware::class,
+            'role_or_permission' => RoleOrPermissionMiddleware::class,
         ]);
 
         $middleware->throttleApi();
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (\Illuminate\Auth\AuthenticationException $e, $request) {
+        // Authentication Exception
+        $exceptions->render(function (AuthenticationException $e, Request $request): ?Response {
             if ($request->is('api/*')) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Unauthenticated',
-                    'timestamp' => now()->toISOString(),
-                ], 401);
+                return unauthorizedRequestResponse();
             }
+
+            return null;
         });
 
-        $exceptions->render(function (\Illuminate\Auth\Access\AuthorizationException $e, $request) {
+        // Authorization Exception
+        $exceptions->render(function (AuthorizationException $e, Request $request): ?Response {
             if ($request->is('api/*')) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Unauthorized',
-                    'timestamp' => now()->toISOString(),
-                ], 403);
+                return forbiddenRequestResponse();
             }
+
+            return null;
         });
 
-        $exceptions->render(function (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e, $request) {
+        // Validation Exception
+        $exceptions->render(function (ValidationException $e, Request $request): ?Response {
             if ($request->is('api/*')) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Resource not found',
-                    'timestamp' => now()->toISOString(),
-                ], 404);
+                return invalidData($e->getMessage(), $e->errors());
             }
+
+            return null;
         });
 
-        $exceptions->render(function (\Illuminate\Database\Eloquent\ModelNotFoundException $e, $request) {
+        // Not Found HTTP Exception
+        $exceptions->render(function (NotFoundHttpException $e, Request $request): ?Response {
             if ($request->is('api/*')) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Model not found',
-                    'timestamp' => now()->toISOString(),
-                ], 404);
+                return notFoundRequestResponse();
             }
+
+            return null;
         });
 
-        $exceptions->render(function (\Throwable $e, $request) {
-            if ($request->is('api/*') && ! config('app.debug')) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Internal server error',
-                    'timestamp' => now()->toISOString(),
-                ], 500);
+        // Model Not Found Exception
+        $exceptions->render(function (ModelNotFoundException $e, Request $request): ?Response {
+            if ($request->is('api/*')) {
+                return notFoundRequestResponse('The requested resource was not found');
             }
+
+            return null;
+        });
+
+        // Method Not Allowed Exception
+        $exceptions->render(function (MethodNotAllowedHttpException $e, Request $request): ?Response {
+            if ($request->is('api/*')) {
+                return methodNotAllowedRequestResponse('This method is not allowed for this endpoint');
+            }
+
+            return null;
+        });
+
+        // Too Many Requests Exception
+        $exceptions->render(function (TooManyRequestsHttpException $e, Request $request): ?Response {
+            if ($request->is('api/*')) {
+                return tooManyRequestsResponse();
+            }
+
+            return null;
+        });
+
+        // Post Too Large Exception
+        $exceptions->render(function (PostTooLargeException $e, Request $request): ?Response {
+            if ($request->is('api/*')) {
+                return postTooLargeResponse();
+            }
+
+            return null;
+        });
+
+        // Database Query Exception
+        $exceptions->render(function (QueryException $e, Request $request): ?Response {
+            if ($request->is('api/*')) {
+                $userMessage = 'A database error occurred. Please try again';
+                $debugMessage = $e->getMessage();
+
+                return errorResponse($userMessage, $debugMessage);
+            }
+
+            return null;
+        });
+
+        // Generic Throwable Exception
+        $exceptions->render(function (Throwable $e, Request $request): ?Response {
+            if ($request->is('api/*')) {
+                $userMessage = 'An unexpected error occurred. Please try again';
+                $debugMessage = $e->getMessage();
+
+                return errorResponse($userMessage, $debugMessage);
+            }
+
+            return null;
         });
     })->create();
