@@ -25,9 +25,9 @@ use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__ . '/../routes/web.php',
-        api: __DIR__ . '/../routes/api.php',
-        commands: __DIR__ . '/../routes/console.php',
+        web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php',
+        commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function () {
             RateLimiter::for('api', function (Request $request) {
@@ -103,7 +103,7 @@ return Application::configure(basePath: dirname(__DIR__))
             return null;
         });
 
-        // Too Many Requests Exception
+        // Too Much Requests Exception
         $exceptions->render(function (TooManyRequestsHttpException $e, Request $request): ?Response {
             if ($request->is('api/*')) {
                 return tooManyRequestsResponse();
