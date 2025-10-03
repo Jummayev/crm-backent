@@ -17,7 +17,6 @@ class FileController extends Controller
 
     public function __construct(private readonly FileInterface $fileRepository)
     {
-        parent::__construct();
     }
 
     /**

@@ -10,7 +10,6 @@ trait TranslationTrait
 
     public function getAttribute($key)
     {
-        dd($key);
         if (in_array($key, $this->translation)) {
             $currentLang = Lang::locale();
             $translatedField = "{$key}_{$currentLang}";

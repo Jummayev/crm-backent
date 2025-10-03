@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\FileManager\Dto;
+namespace Modules\FileManager\DTO;
 
 class UploadFileDto
 {
