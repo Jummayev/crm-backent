@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Called before routes are registered.
      *
-     * Register any model bindings or pattern based filters.
+     * Register any model bindings or pattern-based filters.
      */
     public function boot(): void
     {
@@ -25,17 +25,6 @@ class RouteServiceProvider extends ServiceProvider
     public function map(): void
     {
         $this->mapApiRoutes();
-        $this->mapWebRoutes();
-    }
-
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     */
-    protected function mapWebRoutes(): void
-    {
-        Route::middleware('web')->group(module_path($this->name, '/routes/web.php'));
     }
 
     /**
