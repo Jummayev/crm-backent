@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 2000);
+            $table->string('path', 2000)->unique();
             $table->foreignId('parent_id')->nullable()->constrained('folders');
             $table->integer('sort')->default(0);
             $table->softDeletes();

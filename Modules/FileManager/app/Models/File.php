@@ -3,8 +3,12 @@
 namespace Modules\FileManager\Models;
 
 use App\Exceptions\ErrorException;
+use Database\Factories\FileFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @property string $name
@@ -23,7 +27,17 @@ use Illuminate\Support\Str;
  */
 class File extends Model
 {
+    use HasFactory;
+
     protected $table = 'files';
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): FileFactory
+    {
+        return FileFactory::new();
+    }
 
     protected $fillable = [
         'name',
@@ -94,8 +108,8 @@ class File extends Model
         static::saving(function ($file) {
             if (! in_array(Str::lower($file->ext), config('filemanager.allowed_ext'))) {
                 $path = $file->path.'/'.$file->file;
-                \Illuminate\Support\Facades\File::delete($path);
-                throw new ErrorException('Unknown extension');
+                FacadesFile::delete($path);
+                throw new ErrorException('Unknown extension', Response::HTTP_BAD_REQUEST);
             }
         });
     }

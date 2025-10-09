@@ -11,4 +11,10 @@ interface FileInterface
     public function uploadFile(GeneratePathFileDTO $dto);
 
     public function downloadFile(Request $request, string $slug): BinaryFileResponse;
+
+    public function sanitizeFilename(string $filename): string;
+
+    public function hasDoubleExtension(string $filename): bool;
+
+    public function cleanupFiles(array $files): void;
 }

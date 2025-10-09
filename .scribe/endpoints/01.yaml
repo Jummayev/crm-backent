@@ -1,0 +1,328 @@
+name: 'File Management'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/files
+    metadata:
+      groupName: 'File Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Upload files'
+      description: 'Upload one or multiple files to the file manager.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      files:
+        name: files
+        description: 'Array of files to upload.'
+        required: true
+        example: null
+        type: 'file[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      folder_id:
+        name: folder_id
+        description: 'Folder ID to upload files to.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      files: null
+      folder_id: 1
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Success",
+            "data": [{
+              "id": 1,
+              "slug": "abc123def",
+              "name": "document.pdf",
+              "path": "/2025/10/document.pdf",
+              "size": 1024000,
+              "mime_type": "application/pdf",
+              "folder_id": 1,
+              "created_at": "2025-10-03T10:00:00.000000Z",
+              "updated_at": "2025-10-03T10:00:00.000000Z"
+            }]
+          }
+        headers: []
+        description: 'Single file uploaded'
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+            "success": false,
+            "message": "File extension 'exe' is blocked for security reasons.",
+            "data": null
+          }
+        headers: []
+        description: 'Invalid file extension'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "message": "The files field is required.",
+            "errors": {
+              "files": ["At least one file is required."]
+            }
+          }
+        headers: []
+        description: 'Validation error'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/files/{slug}/view'
+    metadata:
+      groupName: 'File Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get file details'
+      description: 'Retrieve details of a specific file by its slug.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      slug:
+        name: slug
+        description: 'The file slug.'
+        required: true
+        example: abc123def
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      slug: abc123def
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Success",
+            "data": {
+              "id": 1,
+              "slug": "abc123def",
+              "name": "document.pdf",
+              "path": "/2025/10/document.pdf",
+              "size": 1024000,
+              "mime_type": "application/pdf",
+              "folder_id": 1,
+              "created_at": "2025-10-03T10:00:00.000000Z",
+              "updated_at": "2025-10-03T10:00:00.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [Modules\\FileManager\\Models\\File]."
+          }
+        headers: []
+        description: 'File not found'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/files/{slug}/download'
+    metadata:
+      groupName: 'File Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Download file'
+      description: 'Download a file by its slug.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      slug:
+        name: slug
+        description: 'The file slug.'
+        required: true
+        example: abc123def
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      slug: abc123def
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '"Binary file content"'
+        headers: []
+        description: 'File download'
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [Modules\\FileManager\\Models\\File]."
+          }
+        headers: []
+        description: 'File not found'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/files/{file_id}'
+    metadata:
+      groupName: 'File Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete file'
+      description: 'Delete a file from the system.'
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      file_id:
+        name: file_id
+        description: 'The ID of the file.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      file:
+        name: file
+        description: 'The file ID.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      file_id: 1
+      file: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "success": true,
+            "message": "Success",
+            "data": {
+              "id": 1,
+              "slug": "abc123def",
+              "name": "document.pdf",
+              "path": "/2025/10/document.pdf",
+              "size": 1024000,
+              "mime_type": "application/pdf",
+              "folder_id": 1,
+              "created_at": "2025-10-03T10:00:00.000000Z",
+              "updated_at": "2025-10-03T10:00:00.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "No query results for model [Modules\\FileManager\\Models\\File]."
+          }
+        headers: []
+        description: 'File not found'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []

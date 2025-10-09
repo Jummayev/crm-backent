@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 2000);
             $table->string('path');
-            $table->string('slug');
-            $table->string('ext');
-            $table->string('file');
+            $table->string('slug')->unique();
+            $table->string('ext', 20);
+            $table->string('file', 2000);
             $table->string('domain', 1000)->nullable();
-            $table->integer('size');
-            $table->foreignId('folder_id')->nullable()->constrained();
-            $table->string('description')->nullable();
+            $table->unsignedBigInteger('size');
+            $table->foreignId('folder_id')->nullable()->constrained('folders');
+            $table->text('description')->nullable();
             $table->integer('sort')->default(0);
             $table->softDeletes();
             $table->timestamps();

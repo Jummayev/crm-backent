@@ -13,14 +13,9 @@ Route::prefix('v1')->group(function (): void {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/me', [AuthController::class, 'me']);
 
-        // Admin-only routes
-        // User management
         Route::prefix('users')->group(function (): void {
             Route::get('/', [UserController::class, 'index']);
             Route::get('/{user}', [UserController::class, 'show']);
-            // Route::post('/', [UserController::class, 'store']);
-            // Route::put('/{user}', [UserController::class, 'update']);
-            // Route::delete('/{user}', [UserController::class, 'destroy']);
         });
 
         // Manager and Admin routes

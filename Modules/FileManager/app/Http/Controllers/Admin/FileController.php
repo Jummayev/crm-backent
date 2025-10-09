@@ -15,9 +15,7 @@ class FileController extends Controller
 {
     protected mixed $modelClass = File::class;
 
-    public function __construct(private readonly FileInterface $fileRepository)
-    {
-    }
+    public function __construct(private readonly FileInterface $fileRepository) {}
 
     /**
      * Display a listing of the resource.

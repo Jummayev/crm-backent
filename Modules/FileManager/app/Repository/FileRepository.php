@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Modules\FileManager\Dto\GeneratedPathFileDTO;
 use Modules\FileManager\Dto\GeneratePathFileDTO;
@@ -26,8 +27,8 @@ class FileRepository implements FileInterface
         DB::beginTransaction();
         try {
             $generatedDTO = $this->generatePath($dto);
-
-            $generatedDTO->origin_name = $dto->file->getClientOriginalName();
+            $safeName = $this->sanitizeFilename($dto->file->getClientOriginalName());
+            $generatedDTO->origin_name = $safeName;
             $generatedDTO->file_size = (float) $dto->file->getSize();
             $generatedDTO->folder_id = $dto->folder_id;
             $dto->file->move($generatedDTO->file_path, $generatedDTO->file_name.'.'.$generatedDTO->file_ext);
@@ -111,5 +112,70 @@ class FileRepository implements FileInterface
         $headers = ['Content-Type' => 'application/'.$file->ext];
 
         return response()->download($link, $file->name, $headers);
+    }
+
+    /**
+     * Sanitize filename to prevent path traversal
+     */
+    public function sanitizeFilename(string $filename): string
+    {
+        // Remove path traversal attempts
+        $filename = basename($filename);
+
+        // Remove null bytes and control characters (security)
+        $filename = preg_replace('/[\x00-\x1F\x7F]/', '', $filename);
+
+        // Remove dangerous characters for file systems
+        $filename = str_replace(['/', '\\', ':', '*', '?', '"', '<', '>', '|'], '_', $filename);
+
+        // Trim dots and spaces from start/end (Windows issues)
+        $filename = trim($filename, '. ');
+
+        // Prevent empty filename
+        if (empty($filename)) {
+            $filename = 'file_'.time();
+        }
+
+        return $filename;
+    }
+
+    /**
+     * Check for double extension
+     * attacks
+     */
+    public function hasDoubleExtension(string $filename): bool
+    {
+        $parts = explode('.', $filename);
+
+        if (count($parts) > 2) {
+            $dangerousExts = config('filemanager.blocked_extensions', 10);
+
+            if (array_any($parts, fn ($part) => in_array(strtolower($part), $dangerousExts))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Cleanup uploaded files from disk
+     */
+    public function cleanupFiles(array $files): void
+    {
+        foreach ($files as $file) {
+            try {
+                $filePath = $file->getDist();
+
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            } catch (Exception $e) {
+                Log::warning('Failed to cleanup file', [
+                    'file_id' => $file->id ?? null,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
     }
 }

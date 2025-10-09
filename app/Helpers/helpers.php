@@ -49,7 +49,7 @@ function numberReadable($number, int $decimals = 2, string $dec_point = ',', str
     $integer = strrev(implode($thousands_sep, str_split(strrev($integer), 3)));
 
     // Kasr qismini formatlash
-    if ($decimals > 0 && isset($decimal)) {
+    if ($decimals > 0 && $decimal !== null) {
         return $integer.$dec_point.str_pad($decimal, $decimals, '0');
     }
 

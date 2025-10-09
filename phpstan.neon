@@ -21,13 +21,5 @@ parameters:
             message: "#^Called 'env' outside of the config directory which returns null when the config is cached, use 'config'.$#"
             path: *config/*.php
         -
-            message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Model::.*\\(\\).$#"
-        -
-            message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model::\\$.*$#"
-        -
-            message: "#^Access to an undefined property Modules\\\\.*\\\\Models\\\\.*::\\$.*$#"
-        -
-            message: "#^Access to an undefined property App\\\\Models\\\\.*::\\$.*$#"
-        -
             message: "#^Trait Laravel\\\\Passport\\\\HasApiTokens requires using class to implement Laravel\\\\Passport\\\\Contracts\\\\OAuthenticatable, but App\\\\Models\\\\User does not\\.$#"
             path: app/Models/User.php

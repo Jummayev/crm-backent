@@ -1,0 +1,788 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Handle user login.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      username:
+        name: username
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters.'
+        required: true
+        example: ']|{+-0pBNvYg'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      username: architecto
+      password: ']|{+-0pBNvYg'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/logout
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Handle user logout.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/me
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get an authenticated user.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"userMessage":"Success","status":"success","data":{"id":1,"name":"Francesca Schuster","username":"bschinner","email":"mills.thurman@example.com"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+          access-control-allow-headers: 'Content-Type, Authorization, X-Requested-With, Accept'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/users
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of users.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"userMessage":"Users retrieved successfully","status":"success","data":[{"id":51,"name":"Mrs. Dannie Jerde","username":"hirthe.felicia","email":"wehner.reed@example.net","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":50,"name":"Mrs. Nelle Kautzer III","username":"baumbach.johnathan","email":"ken.mitchell@example.net","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":49,"name":"Prof. Kennedi Glover","username":"minerva.gislason","email":"delta.kertzmann@example.net","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":48,"name":"Dimitri Wehner","username":"ukutch","email":"erwin.walter@example.com","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":47,"name":"Hollie Bode","username":"opal.gusikowski","email":"jalen37@example.org","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":46,"name":"Esperanza Thiel","username":"green.mekhi","email":"pdaniel@example.net","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":45,"name":"Carolyn Lindgren","username":"elliot.auer","email":"trunte@example.com","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":44,"name":"Dallas Walter","username":"satterfield.katlyn","email":"mkuhn@example.com","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":43,"name":"Prof. Rosemarie Lindgren","username":"jlarkin","email":"hgoyette@example.org","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":42,"name":"Myrtis Murray","username":"stracke.karl","email":"mosciski.sammie@example.org","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":41,"name":"Hardy Purdy","username":"nferry","email":"alang@example.net","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":40,"name":"Providenci Hessel MD","username":"aprohaska","email":"connelly.elsie@example.org","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":39,"name":"Rozella Welch","username":"madilyn86","email":"maymie.veum@example.com","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":38,"name":"Dr. Ramiro Kris Sr.","username":"hoppe.charley","email":"ibeer@example.net","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"},{"id":37,"name":"Anne Nikolaus","username":"mosciski.talia","email":"russel.kristina@example.com","email_verified_at":"2025-10-02T09:45:34.000000Z","roles":[],"permissions":[],"created_at":"2025-10-02T09:45:35.000000Z","updated_at":"2025-10-02T09:45:35.000000Z"}],"meta":{"current_page":1,"last_page":4,"per_page":15,"total":51}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+          access-control-allow-headers: 'Content-Type, Authorization, X-Requested-With, Accept'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/users/{user_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified user.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"userMessage":"User retrieved successfully","status":"success","data":{"id":1,"name":"Francesca Schuster","username":"bschinner","email":"mills.thurman@example.com","email_verified_at":"2025-09-30T13:34:07.000000Z","roles":[],"permissions":[],"created_at":"2025-09-30T13:34:07.000000Z","updated_at":"2025-09-30T13:34:07.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+          access-control-allow-headers: 'Content-Type, Authorization, X-Requested-With, Accept'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/admin/folders
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"userMessage":"Success","status":"success","data":[],"meta":{"current_page":1,"last_page":1,"per_page":15,"total":0}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+          access-control-allow-headers: 'Content-Type, Authorization, X-Requested-With, Accept'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/admin/folders
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must be at least 0 characters. Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'The <code>id</code> of an existing record in the folders table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      user_id:
+        name: user_id
+        description: 'The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      sort:
+        name: sort
+        description: 'Must be at least -2147483648. Must not be greater than 2147483647.'
+        required: true
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: b
+      sort: 22
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/admin/folders/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the specified resource.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the folder.'
+        required: true
+        example: '564'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: '564'
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"userMessage":"Resource not found","status":"error","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+          access-control-allow-headers: 'Content-Type, Authorization, X-Requested-With, Accept'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/v1/admin/folders/{folder_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      folder_id:
+        name: folder_id
+        description: 'The ID of the folder.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      folder_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must be at least 0 characters. Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'The <code>id</code> of an existing record in the folders table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      user_id:
+        name: user_id
+        description: 'The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      sort:
+        name: sort
+        description: 'Must be at least -2147483648. Must not be greater than 2147483647.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: b
+      sort: 22
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/admin/folders/{folder_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      folder_id:
+        name: folder_id
+        description: 'The ID of the folder.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      folder_id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/admin/files
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      files:
+        name: files
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      folder_id:
+        name: folder_id
+        description: 'The <code>id</code> of an existing record in the folders table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      files: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/admin/files/{slug}/view'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the specified resource.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      slug:
+        name: slug
+        description: 'The slug of the file.'
+        required: true
+        example: lg4
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      slug: lg4
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"userMessage":"Resource not found","status":"error","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+          access-control-allow-headers: 'Content-Type, Authorization, X-Requested-With, Accept'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/admin/files/{slug}/download'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      slug:
+        name: slug
+        description: 'The slug of the file.'
+        required: true
+        example: lg4
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      slug: lg4
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"userMessage":"Resource not found","status":"error","data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+          access-control-allow-methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+          access-control-allow-headers: 'Content-Type, Authorization, X-Requested-With, Accept'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/admin/files/{file_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      file_id:
+        name: file_id
+        description: 'The ID of the file.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      file_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTk5OWFjZC1mNzBiLTcxMWQtOTJjNS0yZmUxZDhmNGNlZTYiLCJqdGkiOiI5MWMxMDk4ZDc0ZDExNTUyY2QzY2QzNjA4ODYxMGQxNmI0MDg5ODcwNDYxNjc4NDExYzkyMjkxOGZmYTcwZjY5NDI4NDZhZmIxYTFhODk3NCIsImlhdCI6MTc1OTQ4OTI1OC41NTY4MzEsIm5iZiI6MTc1OTQ4OTI1OC41NTY4MzIsImV4cCI6MTc5MTAyNTI1OC41NDc3MDMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ezcUyDA1sYWQtsVZFR2ryS6lhlWXkG_c03FTNKwMuEt4FzCCFR2AnkZ2TwFd1LfqhredGk14NBTEYDBY8oGNLwcpvFxQY7ri_e7HYYIOklB3ZdSuepTCbQNrD_OBBFJDy2oQUtdr2zHYV6bJJWdvRTvw9SU9Typm7k12lM0A2UtBg01xmeFZO9GYFrGQ7pSK90FeIi6_VAt95qcBOwHtCDfrl0rBE6OsIPxNyRW2-WrZ3Zyqb_DIGpGdEtz25AqOO1F87W0Selzp0JqtGWE983YaNFV1zCOtCKDPjMVuLSpV2KqejC-x9sM4T7QvCH-xmAuov8YUqWR4fcU6Fgrxc6ldgWblt5VVCdavARec7sN03fROG_Bk3uhL8daFW2Eq1IFfGuweIWpLuZ-aMEapq-96gZbkGWTZrdIgQ7KwzFnM97VHP3uusbmSsK4DKJ3R-eA4B2Uu7QYRvDCCl0yxY4ocK9SDOaA1mmJDsvYG3OB1Cr6g7cY1VxnL6VRUJmjhg4Z04hihy93k0NIdluPATpEt0goN7BUGzPR5DSrSzMWKDt1N-nzgdLOz3HdywisYhDjmJUfcFA4E4O_wJPvKe3nh1paP7gTlRYQUTtvC_Ugnis7vdlJuf_SKVD-BXqsjYPQxUppoadUsndf8cEr3elRm01-3w9EE7kcmM2UAxCs'
+    controller: null
+    method: null
+    route: null
+    custom: []
