@@ -17,4 +17,6 @@ class GeneratedPathFileDTO
     public float $file_size;
 
     public ?int $folder_id;
+
+    public string $type = 'public';
 }

@@ -22,6 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @property int $folder_id
  * @property string $description
  * @property int $sort
+ * @property string $type
  * @property-read string $src
  * @property-read array $thumbnails
  */
@@ -51,6 +52,7 @@ class File extends Model
         'folder_id',
         'description',
         'sort',
+        'type',
     ];
 
     protected $hidden = [
@@ -70,7 +72,12 @@ class File extends Model
 
     public function getDist(): string
     {
-        return base_path("static/$this->path/$this->file");
+        return base_path("static/{$this->type}/$this->path/$this->file");
+    }
+
+    public function getFullPath(): string
+    {
+        return "static/{$this->type}/$this->path/$this->file";
     }
 
     protected $appends = [
@@ -80,7 +87,13 @@ class File extends Model
 
     public function getSrcAttribute(): string
     {
-        return "{$this->domain}/{$this->path}/{$this->file}";
+        $token = \Modules\FileManager\Services\TokenService::generateToken($this, auth()->id() ?? 0);
+
+        if ($this->type === 'private') {
+            return "https://file.{$this->domain}/storage/{$this->slug}/view?token={$token}";
+        }
+
+        return "https://file.{$this->domain}/public/{$this->path}/{$this->file}?token={$token}";
     }
 
     public function getThumbnailsAttribute(): array
@@ -89,9 +102,10 @@ class File extends Model
         $thumbnails = [];
         foreach ($thumbs as &$thumb) {
             $slug = $thumb['slug'];
-            $path = base_path("static/$this->path/".$this->slug.'_'.$slug.'.'.$this->ext);
+            $path = base_path("static/{$this->type}/$this->path/".$this->slug.'_'.$slug.'.'.$this->ext);
             if (file_exists($path)) {
-                $src = "{$this->domain}/{$this->path}{$this->slug}_{$slug}.{$this->ext}";
+                $typePrefix = $this->type === 'public' ? 'public' : 'storage';
+                $src = "https://file.{$this->domain}/{$typePrefix}/{$this->path}{$this->slug}_{$slug}.{$this->ext}";
             } else {
                 $src = $this->getSrcAttribute();
             }

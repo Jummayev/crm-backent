@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Modules\FileManager\Dto\GeneratePathFileDTO;
 use Modules\FileManager\Http\Requests\File\StoreFileRequest;
 use Modules\FileManager\Models\File;
+use Modules\FileManager\Models\FileAccessLog;
 use Modules\FileManager\Repository\Interfaces\FileInterface;
+use Modules\FileManager\Services\TokenService;
 
 class FileController extends Controller
 {
@@ -69,6 +71,7 @@ class FileController extends Controller
                     $dto = new GeneratePathFileDTO;
                     $dto->file = $file;
                     $dto->folder_id = $request->get('folder_id');
+                    $dto->type = $request->get('type', 'public');
 
                     $uploadedFile = $this->fileRepository->uploadFile($dto);
                     $uploadedFiles[] = $uploadedFile;
@@ -178,5 +181,52 @@ class FileController extends Controller
         $file->delete();
 
         return okResponse($file);
+    }
+
+    /**
+     * View file with token
+     *
+     * View a file using an encrypted token. Logs access for private files.
+     *
+     * @group File Management
+     *
+     * @urlParam slug string required The file slug. Example: abc123def
+     *
+     * @queryParam token string required The encrypted token. Example: eyJpdiI6...
+     *
+     * @response 200 scenario="File downloaded" "Binary file content"
+     * @response 401 scenario="Invalid or expired token" {
+     *   "message": "Invalid or expired token"
+     * }
+     */
+    public function viewWithToken(Request $request, string $slug)
+    {
+        $token = $request->query('token');
+
+        if (! $token) {
+            abort(403);
+        }
+
+        $file = File::where('slug', $slug)->firstOrFail();
+        $payload = TokenService::validateToken($token, $file->id);
+
+        if (! $payload) {
+            abort(401);
+        }
+
+        FileAccessLog::logAccess(
+            $file,
+            $payload['user_id'],
+            $request->ip(),
+            $request->userAgent()
+        );
+
+        // Use X-Accel-Redirect for nginx to serve the file
+        $filePath = $file->getFullPath();
+
+        return response('', 200)
+            ->header('X-Accel-Redirect', '/internal-files/'.$filePath)
+            ->header('Content-Type', mime_content_type($file->getDist()) ?: 'application/octet-stream')
+            ->header('Content-Disposition', 'inline; filename="'.$file->name.'"');
     }
 }

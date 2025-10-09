@@ -15,12 +15,13 @@ class StoreFileRequest extends BaseApiRequest
         return [
             'files' => ['required', 'array', 'min:1', 'max:'.config('filemanager.max_files_per_upload', 10)],
             'files.*' => [
-                //                'required',
+                'required',
                 'file',
                 'max:'.config('filemanager.max_file_size', 102_400), // 100 MB
                 'mimes:'.implode(',', config('filemanager.allowed_ext', [])),
             ],
             'folder_id' => ['nullable', 'exists:folders,id'],
+            'type' => ['required', 'string', 'in:private,public'],
         ];
     }
 

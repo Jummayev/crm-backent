@@ -52,6 +52,7 @@ class FileRepository implements FileInterface
         $created_at = time();
 
         $file = $generatePathFileDTO->file;
+        $type = $generatePathFileDTO->type ?? 'public';
         $y = date('Y', $created_at);
         $m = date('m', $created_at);
         $d = date('d', $created_at);
@@ -61,7 +62,7 @@ class FileRepository implements FileInterface
         $file_hash = Str::random(32);
 
         $basePath = base_path('static');
-        $folderPath = "$y/$m/$d/$h/$i";
+        $folderPath = "$type/$y/$m/$d/$h/$i";
         $fullPath = "$basePath/$folderPath";
         if (! is_dir($fullPath)) {
             mkdir($fullPath, 00777, recursive: true);
@@ -73,6 +74,7 @@ class FileRepository implements FileInterface
         $generatedPathFileDTO->file_name = $file_hash;
         $generatedPathFileDTO->file_ext = $file->getClientOriginalExtension();
         $generatedPathFileDTO->file_path = $fullPath;
+        $generatedPathFileDTO->type = $type;
 
         return $generatedPathFileDTO;
     }
@@ -82,6 +84,9 @@ class FileRepository implements FileInterface
      */
     private function createFileModel(GeneratedPathFileDTO $generatedDTO)
     {
+        $type = $generatedDTO->type ?? 'public';
+        $pathWithoutType = str_replace($type.'/', '', $generatedDTO->file_folder);
+
         $data = [
             'name' => $generatedDTO->origin_name,
             'description' => $generatedDTO->origin_name,
@@ -89,10 +94,12 @@ class FileRepository implements FileInterface
             'ext' => $generatedDTO->file_ext,
             'file' => $generatedDTO->file_name.'.'.$generatedDTO->file_ext,
             'folder_id' => $generatedDTO->folder_id,
-            'path' => $generatedDTO->file_folder,
+            'path' => $pathWithoutType,
             'domain' => config('filemanager.cdn_domain'),
             'user_id' => Auth::guard('api')->id(),
             'size' => $generatedDTO->file_size,
+            'type' => $type,
+            'visibility' => $type,
         ];
 
         try {
